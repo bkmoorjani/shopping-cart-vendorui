@@ -9,8 +9,6 @@ function* getProducts(action: any) {
     //const apiPrefix:string = yield select(selectShoppinCartApiPrefix);
     const { data: products } = yield call(apiAxios.get, `/products`);
     yield put(addProducts(products));  //create slice for this
-
-
    // const { data: products } = yield call(axios.get, "https://shopping-cart-firstapp.herokuapp.com/products");
   
 }

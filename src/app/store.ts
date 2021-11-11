@@ -4,18 +4,22 @@ import createSagaMiddleware from '@redux-saga/core';
 import getProductsSaga from '../sagas/getProductsSaga';
 import productsSlice from '../features/products/products.slice';
 import commonSlice from '../features/common/common.slice';
+import ordersSlice from '../features/orders/ordersSlice';
+import getOrdersSaga from '../sagas/getOrdersSaga';
 const sagaMiddLeware = createSagaMiddleware();
 
 export const store = configureStore({
   middleware:(getMiddlewares)=>[...getMiddlewares(),sagaMiddLeware],
   reducer: {
     counter: counterReducer,
-    products:productsSlice.reducer,
-    common : commonSlice.reducer
+    products: productsSlice.reducer,
+    orders: ordersSlice.reducer,
+    common : commonSlice.reducer,
 
   },
 });
 sagaMiddLeware.run(getProductsSaga);
+sagaMiddLeware.run(getOrdersSaga);
 
 
 

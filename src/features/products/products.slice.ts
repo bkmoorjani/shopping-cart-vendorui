@@ -9,7 +9,8 @@ export interface IProduct{
     productQuantity: number;
     _id: string;
 }
-const entityAdapter: EntityAdapter<IProduct> = createEntityAdapter<IProduct>({
+const entityAdapter: EntityAdapter<IProduct> =
+    createEntityAdapter<IProduct>({
     selectId: (product: IProduct) => product._id
     
 });
