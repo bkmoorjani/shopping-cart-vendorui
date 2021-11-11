@@ -6,6 +6,8 @@ import productsSlice from '../features/products/products.slice';
 import commonSlice from '../features/common/common.slice';
 import ordersSlice from '../features/orders/ordersSlice';
 import getOrdersSaga from '../sagas/getOrdersSaga';
+import customerSlice from '../features/customers/customersSlice';
+import getCustomersSaga from '../sagas/getCustomersSaga';
 const sagaMiddLeware = createSagaMiddleware();
 
 export const store = configureStore({
@@ -14,13 +16,14 @@ export const store = configureStore({
     counter: counterReducer,
     products: productsSlice.reducer,
     orders: ordersSlice.reducer,
-    common : commonSlice.reducer,
+    common: commonSlice.reducer,
+    customers: customerSlice.reducer
 
   },
 });
 sagaMiddLeware.run(getProductsSaga);
 sagaMiddLeware.run(getOrdersSaga);
-
+sagaMiddLeware.run(getCustomersSaga);
 
 
 export type AppDispatch = typeof store.dispatch;
